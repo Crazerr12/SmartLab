@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/initialFragment">
+
+    <fragment
+        android:id="@+id/initialFragment"
+        android:name="com.example.smartlab.presentation.initial.InitialFragment"
+        android:label="fragment_initial"
+        tools:layout="@layout/fragment_initial" >
+        <action
+            android:id="@+id/action_initialFragment_to_onBoardingViewPagerFragment"
+            app:destination="@id/onBoardingViewPagerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardingViewPagerFragment"
+        android:name="com.example.smartlab.presentation.onboarding.OnBoardingViewPagerFragment"
+        android:label="fragment_on_boarding_view_pager"
+        tools:layout="@layout/fragment_on_boarding_view_pager" >
+        <action
+            android:id="@+id/action_onBoardingViewPagerFragment_to_entranceFragment"
+            app:destination="@id/entranceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/entranceFragment"
+        android:name="com.example.smartlab.presentation.entrance.EntranceFragment"
+        android:label="fragment_entrance"
+        tools:layout="@layout/fragment_entrance" >
+        <action
+            android:id="@+id/action_entranceFragment_to_codeFromEmailFragment"
+            app:destination="@id/codeFromEmailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/codeFromEmailFragment"
+        android:name="com.example.smartlab.presentation.entrance.CodeFromEmailFragment"
+        android:label="fragment_code_from_email"
+        tools:layout="@layout/fragment_code_from_email" >
+        <action
+            android:id="@+id/action_codeFromEmailFragment_to_passwordFragment"
+            app:destination="@id/passwordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordFragment"
+        android:name="com.example.smartlab.presentation.entrance.PasswordFragment"
+        android:label="fragment_password"
+        tools:layout="@layout/fragment_password" >
+        <action
+            android:id="@+id/action_passwordFragment_to_profileCardFragment"
+            app:destination="@id/profileCardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileCardFragment"
+        android:name="com.example.smartlab.presentation.profile.ProfileCardFragment"
+        android:label="fragment_profile_card"
+        tools:layout="@layout/fragment_profile_card" />
+</navigation>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/circle_card">
+
+    <TextView
+        android:id="@+id/dataAndTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/data_time"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/circle_button"
+        android:scaleType="center"
+        android:src="@drawable/ic_baseline_close_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/chooseData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/choose_data"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/dataAndTime"
+        app:layout_constraintTop_toBottomOf="@+id/dataAndTime" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textAutoCompleteInput"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="16dp"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chooseData">
+
+        <AutoCompleteTextView
+            android:id="@+id/textAutoComplete"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border"
+            android:hint="@string/choose_data" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/chooseTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/choose_time"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textAutoCompleteInput"
+        app:layout_constraintTop_toBottomOf="@+id/textAutoCompleteInput" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/containerFlow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="16dp"
+        app:constraint_referenced_ids="buttonTime10,buttonTime13,buttonTime14,buttonTime15,buttonTime16,buttonTime18,buttonTime19"
+        app:flow_horizontalGap="15dp"
+        app:flow_maxElementsWrap="4"
+        app:flow_verticalGap="10dp"
+        app:flow_wrapMode="aligned"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chooseTime" />
+
+    <RadioButton
+        android:button="@android:color/transparent"
+        android:id="@+id/buttonTime10"
+        android:layout_width="0dp"
+        android:gravity="center"
+        android:background="@drawable/button_selector"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:stateListAnimator="@null"
+        android:text="@string/_10_00"
+        android:textColor="@drawable/button_text_selector"
+        android:textSize="16sp" />
+
+    <RadioButton
+        android:id="@+id/buttonTime13"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_selector"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:stateListAnimator="@null"
+        android:text="@string/_13_00"
+        android:button="@android:color/transparent"
+        android:textColor="@drawable/button_text_selector"
+        android:textSize="16sp" />
+
+    <RadioButton
+        android:id="@+id/buttonTime14"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_selector"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:stateListAnimator="@null"
+        android:text="@string/_14_00"
+        android:button="@android:color/transparent"
+        android:textColor="@drawable/button_text_selector"
+        android:textSize="16sp" />
+
+    <RadioButton
+        android:id="@+id/buttonTime15"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_selector"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:stateListAnimator="@null"
+        android:text="@string/_15_00"
+        android:button="@android:color/transparent"
+        android:textColor="@drawable/button_text_selector"
+        android:textSize="16sp" />
+
+    <RadioButton
+        android:id="@+id/buttonTime16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_selector"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:stateListAnimator="@null"
+        android:text="@string/_16_00"
+        android:button="@android:color/transparent"
+        android:textColor="@drawable/button_text_selector"
+        android:textSize="16sp" />
+
+    <RadioButton
+        android:id="@+id/buttonTime18"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_selector"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:stateListAnimator="@null"
+        android:text="@string/_18_00"
+        android:button="@android:color/transparent"
+        android:textColor="@drawable/button_text_selector"
+        android:textSize="16sp" />
+
+    <RadioButton
+        android:id="@+id/buttonTime19"
+        android:layout_width="0dp"
+        android:button="@android:color/transparent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_selector"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:stateListAnimator="@null"
+        android:text="@string/_19_00"
+        android:textColor="@drawable/button_text_selector"
+        android:textSize="16sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonSubmit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_20dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="@dimen/spacing_20dp"
+        android:backgroundTint="@drawable/button_background"
+        android:enabled="false"
+        android:paddingVertical="@dimen/spacing_16dp"
+        android:text="@string/submit"
+        android:textColor="@color/white"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/containerFlow" />
+</androidx.constraintlayout.widget.ConstraintLayout>

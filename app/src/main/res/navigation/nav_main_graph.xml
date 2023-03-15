@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/analyses_graph"
+    app:startDestination="@id/analysesFragment">
+
+    <fragment
+        android:id="@+id/analysesFragment"
+        android:name="com.example.smartlab.presentation.analyses.AnalysesFragment"
+        android:label="fragment_analyses"
+        tools:layout="@layout/fragment_analyses" >
+        <action
+            android:id="@+id/action_analysesFragment_to_shoppingCartFragment"
+            app:destination="@id/shoppingCartFragment" />
+    </fragment>
+
+    <include app:graph="@navigation/results_graph"/>
+    <include app:graph="@navigation/support_graph"/>
+    <include app:graph="@navigation/profile_graph"/>
+    <fragment
+        android:id="@+id/shoppingCartFragment"
+        android:name="com.example.smartlab.presentation.shoppingcart.ShoppingCartFragment"
+        android:label="fragment_shopping_cart"
+        tools:layout="@layout/fragment_shopping_cart" >
+        <action
+            android:id="@+id/action_shoppingCartFragment_to_makingOrderFragment"
+            app:destination="@id/makingOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/makingOrderFragment"
+        android:name="com.example.smartlab.presentation.order.MakingOrderFragment"
+        android:label="fragment_making_order"
+        tools:layout="@layout/fragment_making_order" >
+        <action
+            android:id="@+id/action_makingOrderFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.smartlab.presentation.payment.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" >
+        <action
+            android:id="@+id/action_paymentFragment_to_analysesFragment"
+            app:destination="@id/analysesFragment" />
+    </fragment>
+</navigation>

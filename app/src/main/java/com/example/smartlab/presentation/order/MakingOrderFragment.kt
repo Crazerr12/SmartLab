@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,8 +13,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import android.widget.RadioButton
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
@@ -22,6 +25,9 @@ import com.example.smartlab.data.preferences.SharedPrefUserStorage
 import com.example.smartlab.databinding.*
 import com.example.smartlab.presentation.base.BaseFragment
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import java.time.LocalDate
+import java.time.format.TextStyle
+import java.util.*
 
 
 class MakingOrderFragment : BaseFragment() {
@@ -29,6 +35,8 @@ class MakingOrderFragment : BaseFragment() {
     private lateinit var dialog: BottomSheetDialog
     override val showBottomNavigationView: Boolean = false
     lateinit var binding: FragmentMakingOrderBinding
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -171,7 +179,9 @@ class MakingOrderFragment : BaseFragment() {
             binding.buttonOrder.isEnabled = false
         }
 
-        binding.buttonOrder.setOnClickListener { navigation.navigate(R.id.action_makingOrderFragment_to_paymentFragment) }
+        binding.buttonOrder.setOnClickListener {
+            navigation.navigate(R.id.action_makingOrderFragment_to_paymentFragment)
+        }
 
         return binding.root
     }
@@ -234,11 +244,51 @@ class MakingOrderFragment : BaseFragment() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun createDataTimeDialog(binding: FragmentMakingOrderBinding) {
         val dataBinding = FragmentDialogDataTimeBinding.inflate(layoutInflater)
         dialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme)
         dialog.setContentView(dataBinding.root)
         dialog.show()
+
+        val dataTimeNow = LocalDate.now()
+        val array = mutableListOf<String>()
+
+        fun setMonth(value: LocalDate): String? {
+            return value.month.getDisplayName(TextStyle.FULL, Locale("ru"))
+        }
+
+        array.add("Сегодня, ${dataTimeNow.dayOfMonth} ${setMonth(dataTimeNow)}")
+        array.add("Завтра, ${dataTimeNow.plusDays(1).dayOfMonth} ${setMonth(dataTimeNow.plusDays(1))}")
+        array.add("Послезавтра, ${dataTimeNow.plusDays(2).dayOfMonth} ${setMonth(dataTimeNow.plusDays(2))}")
+
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, array)
+        dataBinding.textAutoComplete.setAdapter(arrayAdapter)
+
+        val list = listOf(
+            dataBinding.buttonTime10,
+            dataBinding.buttonTime13,
+            dataBinding.buttonTime14,
+            dataBinding.buttonTime15,
+            dataBinding.buttonTime16,
+            dataBinding.buttonTime18,
+            dataBinding.buttonTime19,
+        )
+
+        dataBinding.textAutoComplete.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                var isChecked = false
+                for (btn in list)
+                    if (btn.isChecked)
+                        isChecked = true
+                dataBinding.buttonSubmit.isEnabled =
+                    isChecked && dataBinding.textAutoComplete.text!!.isNotEmpty()
+            }
+
+            override fun afterTextChanged(p0: Editable?) {}
+        })
 
         fun resetButtonSelection() {
             dataBinding.apply {
@@ -260,44 +310,38 @@ class MakingOrderFragment : BaseFragment() {
 
         dataBinding.close.setOnClickListener { dialog.cancel() }
 
+        fun dataNotEmpty() {
+            dataBinding.buttonSubmit.isEnabled = dataBinding.textAutoComplete.text!!.isNotEmpty()
+        }
+
         dataBinding.buttonTime10.setOnClickListener {
             onClick(dataBinding.buttonTime10)
-            dataBinding.buttonSubmit.isEnabled = true
+            dataNotEmpty()
         }
         dataBinding.buttonTime13.setOnClickListener {
             onClick(dataBinding.buttonTime13)
-            dataBinding.buttonSubmit.isEnabled = true
+            dataNotEmpty()
         }
         dataBinding.buttonTime14.setOnClickListener {
             onClick(dataBinding.buttonTime14)
-            dataBinding.buttonSubmit.isEnabled = true
+            dataNotEmpty()
         }
         dataBinding.buttonTime15.setOnClickListener {
             onClick(dataBinding.buttonTime15)
-            dataBinding.buttonSubmit.isEnabled = true
+            dataNotEmpty()
         }
         dataBinding.buttonTime16.setOnClickListener {
             onClick(dataBinding.buttonTime16)
-            dataBinding.buttonSubmit.isEnabled = true
+            dataNotEmpty()
         }
         dataBinding.buttonTime18.setOnClickListener {
             onClick(dataBinding.buttonTime18)
-            dataBinding.buttonSubmit.isEnabled = true
+            dataNotEmpty()
         }
         dataBinding.buttonTime19.setOnClickListener {
             onClick(dataBinding.buttonTime19)
-            dataBinding.buttonSubmit.isEnabled = true
+            dataNotEmpty()
         }
-
-        val list = listOf(
-            dataBinding.buttonTime10,
-            dataBinding.buttonTime13,
-            dataBinding.buttonTime14,
-            dataBinding.buttonTime15,
-            dataBinding.buttonTime16,
-            dataBinding.buttonTime18,
-            dataBinding.buttonTime19,
-        )
 
         dataBinding.buttonSubmit.setOnClickListener {
             for (button in list) {

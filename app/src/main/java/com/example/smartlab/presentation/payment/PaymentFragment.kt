@@ -36,7 +36,7 @@ class PaymentFragment : BaseFragment() {
                 binding.progressBar.visibility = View.GONE
                 binding.buttonToMain.visibility = View.VISIBLE
                 binding.buttonPurchaseReceipt.visibility = View.VISIBLE
-                binding.orderSuccussfullyPaid.visibility = View.VISIBLE
+                binding.orderSuccessfullyPaid.visibility = View.VISIBLE
                 binding.infoAboutDelivery.visibility = View.VISIBLE
                 binding.rulesForPreparing.visibility = View.VISIBLE
                 binding.image.visibility = View.VISIBLE

@@ -52,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/paymentText" />
 
     <TextView
-        android:id="@+id/orderSuccussfullyPaid"
+        android:id="@+id/orderSuccessfullyPaid"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="52dp"
@@ -76,7 +76,7 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/orderSuccussfullyPaid" />
+        app:layout_constraintTop_toBottomOf="@+id/orderSuccessfullyPaid" />
 
     <TextView
         android:id="@+id/rulesForPreparing"

@@ -83,7 +83,7 @@
     <string name="add_patient">Добавить пациента</string>
     <string name="save">Сохранить</string>
     <string name="payment">Оплата</string>
-    <string name="contacting_the_bank">Связываемся с банк…</string>
+    <string name="contacting_the_bank">Связываемся с банком…</string>
     <string name="make_the_payment">Производим оплату</string>
     <string name="your_order_has_been_successfully_paid">Ваш заказ успешно оплачен</string>
     <string name="you_just_have_to_wait">Вам осталось дождаться приезда медсестры и сдать анализы. До скорой встречи!</string>
